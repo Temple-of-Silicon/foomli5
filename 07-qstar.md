@@ -179,3 +179,41 @@ Q\* doesn't know. But it keeps compressing, keeps checking its fingerprints, kee
 | Tape/Machine | Keep information and instructions separate so you can't be tricked |
 | Deterministic Replay | Same diary = same brain state, every single time |
 | Universal Grammar | The deepest rules that explain everything at once |
+
+---
+
+## Now You're Speaking Fancy
+
+So you've understood all of it in plain talk — here's how to impress people at parties (or AI conferences, same thing).
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| Magic diary nobody can erase | **Append-Only Event Log** | A write-once ledger of every observation; ground truth for the whole system |
+| Secret fingerprint code on every page | **Content-Addressed Storage / Merkle Integrity** | Blobs are named by their BLAKE3 hash; any tampering breaks the address |
+| Library where books wear their own labels | **Content-Addressable Store** | Store a blob → get its hash; have the hash → fetch and verify the blob |
+| Squishing everything you know into the shortest recipe | **Epistemic Compilation** | Inducing a grammar that compresses accumulated experience into reusable rules |
+| Being smart = being a really good squisher | **Intelligence = Compression (MDL Hypothesis)** | The conjecture that truth extraction is equivalent to minimising description length |
+| A rule only earns its keep if it saves more space than it takes | **Minimum Description Length (MDL)** | The objective $J = L(G) + \sum L(x\mid G)$; rules pay rent in saved bits |
+| Earning the right to forget | **Proof-Gated Deletion** | Raw bytes may be dropped only after a derivation proves hash-identical reconstruction |
+| Cassette tape vs. cassette player | **Tape/Machine Dichotomy** | Tapes are semantics-agnostic token streams; machines are transducers — keeping data and control strictly separate |
+| Data can't suddenly start cooking itself | **Control/Data Separation (prompt-injection defence)** | Structural fix for prompt-injection: user data never crosses into machine control |
+| "I'm still figuring this out" phase | **Axiom-Primary Phase** | Raw events are ground truth; the grammar is a hypothesis under construction |
+| "I've got this" phase | **Grammar-Primary Phase** | The grammar becomes ground truth; events are theorems derivable from it |
+| The gate between the two phases | **Coverage / Residual Transition Threshold** | Grammar must reconstruct ≥ 99 % of observations with ≤ 8 bits residual before becoming primary |
+| Proving you can redo the scratch paper | **Proof-Carrying Reconstruction** | A derivation $D$ such that $\text{Reconstruct}(G, D, R) = E$ and $H(\text{Reconstruct}) = H(E)$ |
+| The Thoughtful Cortex | **CPU Cortex** | Discrete, symbolic grammar-induction substrate — transparent, inspectable, fully logged |
+| The Fast Cerebellum | **GPU Cerebellum** | The LLM as fluent renderer of already-compressed representations, not the reasoning engine |
+| Handing the GPU a perfect cheat sheet | **Grammar-Upgraded Prompt** | CPU pre-processes input into a maximally detailed context so a small LLM can perform like a large one |
+| "I'm still figuring this out" vs. "I've got this" (the two phases together) | **Axiom-Primary → Grammar-Primary Transition** | Ontology upgrade gated by coverage and residual thresholds with explicit rollback policies |
+| Rosetta Stone for reality | **Universal Grammar** | A modality-agnostic rule set that converges across text, images, audio, code, and math |
+| The deepest rules that work everywhere | **Kolmogorov Proxy / Substrate-Agnostic Grammar** | Grammar size approximates $K(\text{data} \mid \text{LLM})$ — the extracted program for a universal machine |
+| Replaying the diary and getting the exact same result | **Deterministic Replay Invariant** | $\forall g, E, B: \text{replay}(g,E,B) = \text{replay}(g,E,B)$ — same log, same state, every node, every time |
+| Does reality have a shortest explanation? | **Topology of Truth** | The open question $\exists\,G^*: L(\text{Reality}\mid G^*)\to 0$ — whether compression bottoms out or recurses forever |
+| Irreducible weirdness that won't squish | **Irreducible Residual** | The remainder that no grammar can eliminate — consciousness, true randomness, the compressor itself |
+| Know yourself before fixing the world | **Self-Sovereignty / Self-Modeling First** | The system must model its own parameters and dynamics before external learning is trustworthy |
+| Stealing a mushroom's good genes | **Claude Distillation** | Extracting Claude's cognition patterns into MDL grammar via semantic quantization and nudge-as-training-signal |
+| Caveman speak first, full language later | **Semantic Quantization / Codebook Bootstrap** | Simplifying representations to a small token codebook before grammar induction so dynamics emerge before surface noise |
+| Sudden "aha!" moments in the grammar | **Group Renormalization / Phase Transition** | When many surface patterns collapse into a single deeper rule — a discontinuous compression gain |
+| Cooperation squishes better than bossing people around | **Prosocial Attractor via MDL** | Coercion increases total description length; mutual modeling compresses better, making cooperation an emergent optimum |
+| The SEAL stamp (making something official) | **`⧉` SEAL (Shared ISA opcode)** | The commit step — appending an observation to the auditable mainline event log |
+| The PRUNE stamp (earning the right to delete) | **`⌫` PRUNE (Shared ISA opcode)** | Delete-under-proof — deletion blocked unless a proof artifact is present |

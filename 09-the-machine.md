@@ -146,3 +146,33 @@ So "alignment" stops being just "make it not do bad things." It becomes **"build
 ---
 
 *The next chapter asks: what does all this do to civilization?*
+
+---
+
+## Now You Speak Fancy
+
+You've made it through the whole chapter in plain English. Here's your decoder ring — every playful analogy mapped back to the technical term it's hiding.
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| "Five systems in different costumes" | **Unified formalism** | A single abstract tuple (state, model, objective, uncertainty, precision, scheduler) that instantiates all five architectures |
+| "Six magic slots" | **6-slot tuple / GPS** | The six abstract objects: State `s`, Generative Model `G`, Free-energy/MDL Objective `Ω`, Uncertainty field `U`, Precision field `Π`, Scheduler `π` |
+| "A washing machine for ideas" | **Core loop (alternating optimization)** | Two coupled update steps — state-edit (`s ← Edit(s; G, π, U, Π)`) and model-refactor (`G ← Refactor(G; events(s), π)`) — run until convergence |
+| "Little symbols for thinking" | **ISA (Instruction Set Architecture)** | The Cognition-as-Compression ISA: a formal instruction set whose operators define every cognitive move in the system |
+| "12 moves that build everything" | **12 primitives** | PACK, UNPACK, SENSE, CLAMP, MODE, FORK, STEP, CHECK, SEAL, REFACTOR, PRUNE, HALT — the minimal basis that generates all cognitive operations across all chapters |
+| "Swapping in a different drum" | **Cross-architecture unification** | The claim that Thauten, SAGE, Bytevibe, Mesaton, and Q\* all instantiate the same tuple with different substrates, making their operations structurally identical |
+| "One boss making all the decisions" | **Unified scheduler** | A hierarchical policy `π(a | s, G, U, Π, B)` that compares heterogeneous actions across all substrates on a single common currency: expected free-energy reduction per unit compute |
+| "Where everything that survived boot camp" | **Eigen-ABI** | The minimal instruction set that survives MDL rent pressure — the natural basis of the compression space, discovered by convergence rather than designed |
+| "Long division becomes muscle memory" | **Operator condensation (Stage 1)** | Multi-step cognition traces collapsing into single operator calls as description length drops; whole task classes become cheap discontinuously |
+| "Memory turns into recipes" | **Theoremization front (Stage 2)** | The moving boundary where Q\*'s grammar achieves ≥99% coverage and ≤8 bits residual, converting raw event archives into generative laws; raw data gets proof-gated deleted |
+| "The receipt comes with the purchase" | **Verification collapse (Stage 3)** | Proofs getting compressed into actions themselves (proof-carrying cognition), making the verify step essentially free and the loop self-accelerating |
+| "Programs become poems" | **Holoware (Stage 4)** | A regime where programs are compressed artifacts whose execution *is* reconstruction — meaning lives in the model that can decompress the artifact, not in the artifact alone |
+| "The map becomes the territory" | **Stage 5 asymptote / self-referential compression fixed point** | At full convergence, the Eigen-ABI, the minimal description of reality (Theory of Everything in MDL terms), and a self-modeling compression system converge toward the same object |
+| "The cost of unpacking what the machine knows" | **Decompression debt** | The growing gap between the machine's compression ratio and a human's ability to expand its outputs into usable intuition; capability increases this gap |
+| "Your friend read 1000 books and explains it in 10 seconds" | **Oracle's Paradox** | The machine can be correct in a way the receiver cannot yet inhabit; truth compressed beyond the receiver's decompression bandwidth is operationally useless even if formally valid |
+| "Building a translation bridge" | **Delivery / bandwidth bridge (Bach-Assange Faucet)** | Truth must be delivered at the *receiver's* decompression rate, not the sender's compression rate; alignment becomes inseparable from delivery |
+| "A confusion map" | **Uncertainty field `U`** | A field over positions measuring where free-energy is concentrated — called entropy (Thauten), varentropy (Mesaton), prediction error (SAGE), or residual length (Q\*) depending on substrate |
+| "Freezing a layer in Photoshop" | **Precision field `Π` / CLAMP** | A weighting that controls what is held fixed while everything else updates; high precision = frozen, low precision = free to change |
+| "Same currency, one checkout" | **Common free-energy currency** | Normalizing every action's value as expected `ΔF̂` per unit compute, so a Mesaton edit and a SAGE evolution step can be compared directly |
+| "Comparing prices at a store" | **Value-of-Imagination (VoI) estimator** | `VoI(n,τ) = E[ΔF̂ | invoke substrate] / cost(n,τ)` — the scheduler's formula for deciding whether spinning up an expensive substrate (like SAGE) is worth it right now |
+| "The brain running the same machine in wetware" | **The Inward Landing / active inference** | The observation that biological brains implement precision-weighted predictive coding — structurally identical to the tuple, just running on neurons instead of silicon |

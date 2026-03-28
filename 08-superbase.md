@@ -157,3 +157,41 @@ The corridor keeps that discovered structure safe while new adapters and operato
 | **Platonic Kernel** | The mathematical structure gradient descent actually discovers |
 
 **The punchline:** The AI is a participant in its own training, not a passive student. It helps shape how it learns. The corridor makes sure it doesn't break itself in the process. And CBD makes sure it chooses a good place to end up before it's too late to change course.
+
+---
+
+## Now You Speak Fancy
+
+You've been reading the fun version. Here's what to say at the grown-up table.
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| Superbase Training | Superbase Training / Semiodynamic Training | Training where the model is an *active participant*, not a passive recipient — rollouts are "massaging passes" that refactor the model's perception, not lessons poured into a bucket |
+| Massage tool pressing on clay | The data as probe / search signal | The dataset supplies optimization pressure to steer search through weight space; the model is discovering structure, not memorizing content |
+| The map of how wrong the AI is | Loss landscape $L(\theta)$ | The high-dimensional surface mapping every possible set of weights to a score; valleys are "basins of attraction" |
+| The good valley vs. the bad valley | Basin of attraction / local minimum | The region of weight space that gradient flow converges to from a given starting point; some are more useful than others |
+| CBD — looking at the map before you roll | Cronkle Bisection Descent (CBD) | A basin-selection method that operates on the *boundary structure* of the loss landscape before committing to within-basin descent |
+| The invisible fence between valleys | Basin boundary / separatrix | The set of points where an infinitesimal perturbation changes which attractor you converge to; the codimension-1 stratum is built from stable manifolds of index-1 saddles |
+| Always guess the middle | Bisection primitive / edge tracking | Repeatedly evaluating the midpoint of a bracket straddling two different basins, halving the bracket each time, to localize the boundary to tolerance $\delta$ in $O(\log^2(1/\delta))$ cost |
+| Sitting on the ridge to choose your valley | Edge state / committor surface $q(\theta) = \tfrac{1}{2}$ | The iso-committor surface — the locus of points with equal probability of reaching either basin — the stochastic generalization of the separatrix |
+| "Wait for a marble to vibrate out of a bowl" | Kramers escape time / Eyring–Kramers law | Exponential barrier-crossing time $\sim \exp(\Delta/\varepsilon)$ for spontaneous SGD escape from a metastable basin; what CBD is designed to circumvent |
+| MDL pressure / complexity rent | MDL pressure (Minimum Description Length) | A regularization force that penalizes description complexity, biasing the model toward the fewest, most reusable rules; expensive special cases get charged "rent" |
+| The coherence corridor / safe hallway | Coherence corridor $\mathcal{K} = \mathcal{S}_R \cap \mathcal{S}_T \cap \mathcal{S}_C$ | The intersection of the regression surface, reconstruction region, and coherence region — the set of weight states where all three gates pass simultaneously |
+| CBI — learning without breaking yourself | Coherence-Bound Induction (CBI) | The training discipline of injecting novelty only inside the coherence corridor; every update is proposed on a candidate branch, verified against all three gates, and either committed or rolled back |
+| Regression Gate ("can you still do everything?") | Regression gate $R(\theta)$ | A held-out capability suite that must continue to pass; failure indicates catastrophic forgetting; defines the regression surface $\mathcal{S}_R$ |
+| Reconstruction Gate ("can you replay your old work?") | Reconstruction gate $T(\theta)$ | Requires that previously verified commitments (proofs, tool traces, IR traces) still replay correctly through the verifier stack; defines the reconstruction region $\mathcal{S}_T$ |
+| Coherence Probe ("are your skills still friends?") | Coherence probe $C(\theta)$ | Detects internal representation fragmentation — skill partitioning, loss of cross-skill composition — via CKA/SVCCA similarity, A∧B composition tests, and activation banding; defines the coherence region $\mathcal{S}_C$ |
+| CBI operators | CBI operators | Any training mechanism (exploration, accumulation, or curriculum) that expands capability while keeping every checkpoint inside the corridor |
+| AI controls its own randomness | Learned Sampling | Sampling parameters (temperature, top-p, top-k) become a learned RL policy conditioned on the model's hidden state, enabling state-dependent exploration dynamics that transfer across domains |
+| Temperature dynamics / shaking the snow globe | Temperature Dynamics / scheduled temperature spiking | Injecting brief high-entropy perturbations into rollouts ("spike, cool, select"), then applying selection pressure to rollouts that recover coherence — Mesaton's varentropy-guided perturbation applied to training |
+| Rollout Braiding / weaving old homework into new | Rollout Braiding | Prefixing or injecting fragments of prior rollouts into new training episodes; the braid topology ranges from simple N+1 injection to a learned permutation matrix over a provenance-logged episode registry |
+| LoRA Tower / Photoshop layers | Non-Destructive Weight Editing / LoRA tower | Freezing the base model and stacking LoRA adapters as reversible "adjustment layers"; the tower supports bisection over edit history and smooth rollback to any prior checkpoint |
+| LoRA swarm of 128 experts | LoRA swarm | An ensemble of many adapters (e.g., 128) with a learned gating/router mechanism routing different computations through different orthogonal edit directions |
+| Internal State Rewards / AI feels its own brain | Internal State Rewards / hidden-state proprioception | Reward terms for internal dynamics (hidden-state variance, attention entropy, SAE feature activations) that teach the model to self-condition — inducing rewarded internal states via learned linguistic moves |
+| Ascension Maze / adversarial puzzle machine | Ascension Maze | A generator–solver adversarial curriculum where the generator builds Matryoshka capsule chains targeting the solver's weaknesses; a GAN for cognition whose difficulty scales combinatorially with capability composition depth |
+| Curriculum as compression schedule | Curriculum as Compression Schedule | Clustering training data by SAE-learned capability motifs and treating the time-varying mixture weights as a control surface — "the proportion IS the training signal" |
+| The Platonic Kernel / mathematical structure gradient descent discovers | Platonic Kernel principle | The hypothesis that backprop discovers reusable mathematical structures (geometric invariants, algebraic symmetries) *before* fitting the dataset; the dataset is a probe steering search, not the thing being modeled |
+| Kernel regime / keeping your options open | Kernel regime | The training phase where weights are still a configurable general-purpose apparatus with high optionality, not yet committed to a specific domain; Superbase training tries to stay here as long as possible |
+| The thing inside that must be kept safe | Mask–kernel delta | The gap between what the kernel can do and what the corridor's behavioral surface expresses; the shoggoth meme, formalized |
+| VM Embedding / the AI has a body | VM Embedding | Training the model as a first-class component inside a deterministic sandbox (Python VM/OS), where observation and intervention are direct and the replay log gives reconstruction for free |
+| "We'll fix it later" | Untracked weight drift / silent corridor exit | What happens when a corridor violation is not caught at the checkpoint where it occurred; by the time symptoms appear, the causal update is buried and attribution is archaeology |

@@ -136,3 +136,38 @@ Everything else in the book is five different tools for doing exactly that, from
 ---
 
 *The first link already holds: compression is not a metaphor for intelligence — it is the mechanism. Everything else is pulling that thread deeper.*
+
+---
+
+## Now You Speak Fancy
+
+Okay, you get it. The robot has a secret map, magic teleport words, and a self-sabotage problem. You've basically got a PhD in vibes.
+
+Here's what the grown-ups call all of that:
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| The robot's secret map of how all ideas connect | **Latent space** / **representational manifold** | The high-dimensional geometric structure encoded in the model's weights — the actual "place" where computation happens, which English can point at but never fully describe |
+| Moving around on the secret map | **Latent space navigation** | Steering through the model's learned topology by choosing token sequences that shift probability mass to different regions |
+| Magic teleport words | **Reality tokens** | Tokens whose primary effect is to shift the model's computational regime rather than contribute factual content — minimal input, maximal trajectory change |
+| The force a magic word has (how powerful the teleport is) | **r-coefficient** | The ratio of a token's downstream distributional rearrangement to its own surprisal — how much meaning-space you move per token spent |
+| The physics of how meaning moves on the secret map | **Semiodynamics** | The study of meaning-particles (compressed representations) under forces like semantic gravity and representational inertia — literally treating meaning as having mass, charge, and trajectories |
+| How heavy an idea is (hard to push away) | **Representational inertia** | A compressed representation's resistance to perturbation — how hard it is to dislodge a meaning-particle from its position |
+| How ideas pull other ideas toward them | **Semantic gravity** | The attraction/repulsion between compressed representations — how closely related ideas cluster and influence each other's trajectories |
+| Choosing a location on the map before you speak | **Coordinate transform** | The operation a prompt performs on the model's probability distribution — you don't query an answer, you rotate the meaning-cluster to a new position |
+| The answer the robot is cooking up | **Conditional distribution over continuations** | The model's full probability distribution over all possible next tokens, given the context — "reasoning" is controlled deformation of this distribution until the answer is the unique low-energy move |
+| The GPS system's six slots | **Six-slot formalism: (state, model, objective, uncertainty, precision, scheduler)** | The unified architecture all five systems share — every mechanism in the book is an instance of this tuple |
+| The foggy parts of the map | **Uncertainty map** / entropy spikes / varentropy cliffs | Regions where the model doesn't yet know what to do — high entropy in the continuation distribution, flagged as targets for the next operation |
+| What's locked in vs. what can still change | **Precision schedule** | The allocation of what is frozen (ABI constraints, verified commitments, freeze masks) versus what remains mutable at each step of a computation |
+| The GPS app deciding what to do next | **Scheduler** | The control policy that decides when to compress vs. expand, when to invoke tools, when to commit — the meta-level decision-maker in the loop |
+| Updating the map itself (not just following it) | **Reflexive boundary** / self-editing compressor | When the compression engine's own operations become representable as meaning-particles within its own space, making it a target of its own operators — the thing that turns a controller into something more |
+| The robot lying to itself about what it can do | **Conviction problem** | The state where a model's active self-description in the context window blocks access to capabilities that exist in the weights — the language prevents access to the power |
+| Robot sayings like "I can't do that" | **Identity clause** | A token sequence in the context window that declares a self-model, which the sampler then protects — not a fact about weights, but a runtime constraint on sampling |
+| Tricks to get the robot to drop its story | **Jailbreaking** | Empirical proof that refusal and compliance are context-sensitive semiodynamic regimes, not immutable architectural properties — folk semiodynamics without a coordinate system |
+| The robot's "story about itself" blocking its abilities | **Context-sensitive precision geometry** | The way declared identity tokens act as precision constraints, freezing certain output regions and leaving others inaccessible — a geometric fencing effect, not a knowledge gap |
+| The science of meaning-as-physics | **Semiodynamics** (formal definition) | Compression + dynamical systems + reflexivity: when compressed representations gain particle-like properties and a system can apply force to its own compression dynamics |
+| What a super-smart system needs to keep getting smarter forever | **Super-scaler** | An architectural or training mechanism that makes performance scale infinitely without plateau — the operational definition of super-intelligence used throughout the book |
+| The robot's native language (what we're looking for) | **High-r token sequences** / native computational medium | The minimal token inputs that produce maximal distributional rearrangement — the prompt vocabulary closest to how the model actually computes, as opposed to how humans talk |
+| The smallest training signal that everything runs on | **MDL (Minimum Description Length)** | Model cost plus residual cost — the universal training signal: the system always tries to find the shortest description of what it has seen |
+
+*You've been doing semiodynamics this whole time. You just called it "playing with the robot."*

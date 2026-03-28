@@ -129,3 +129,38 @@ The experiment to prove or disprove it:
 ## The one-sentence summary
 
 > **Tokenization gave us a fast but imperfect shortcut; Bytevibe is learning the reverse of that shortcut — so we can keep the speed, drop the imperfections, and teach the AI to read the world in the same alphabet the universe already uses.**
+
+---
+
+## Now You Speak Fancy
+
+You made it through the whole thing! Here's your decoder ring: every playful analogy from above, mapped back to the actual technical term it was standing in for.
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| The flashcard system | **Tokenizer / BPE (Byte Pair Encoding)** | An algorithm that compresses raw bytes into a vocabulary of frequent subword chunks, used as the model's input alphabet |
+| Flashcard deck designed by one person | **Inductive bias** | The hidden assumptions baked into a representation — here, the structural prejudices the tokenizer imposes on what the model "sees" |
+| Burning brain power on flashcard quirks | **Artifact tax** (Hypothesis H3) | Representational capacity consumed by learning tokenizer-specific accidents rather than semantic structure — measurable as directions in hidden space that predict BPE features |
+| Accidental weirdness in the deck | **Tokenizer-induced structural artifacts** | Things like leading-space variants, BPE boundary accidents, and merge-order quirks that the model must learn even though they carry no meaning |
+| " hello" and "hello" being different cards | **Alphabet-relative semiodynamics / precision-field holes** | Tokenizer-created channels that the model's alignment constraints were never trained to treat as equivalent — a safety concern as well as an efficiency one |
+| LEGO bricks | **Byte-level primitives** | The 256 possible values of a single byte — universal, stable, and the actual ground truth of how computers store everything |
+| Reading every single word vs. chapter titles | **Fine resolution vs. coarse resolution** (the length problem) | Bytes are ~3–5× longer than tokens; naive byte models pay that factor directly in compute, which is why a length mechanism is required |
+| Two brains, two speeds | **Multigrid architecture** | A system with a coarse solver operating on compressed spans and a fine solver operating on raw bytes, coupled by learned operators |
+| Global brain (zoom out) | **Coarse solver** ($F_W$) | The frozen pretrained transformer, operating on span embeddings — handles long-range semantics, discourse, code structure |
+| Detail brain (zoom in) | **Fine solver** ($D_\phi$) | A byte-level decoder (typically RetNet-family for streaming efficiency) that renders actual bytes inside each span |
+| "Put a face here" → "nose looked weird, I nudged it" | **V-cycle inference** | The generation-time loop: coarse propose → prolongate to fine → fine render → restrict residual back up → coarse correct → repeat |
+| Translating coarse ideas *down* to fine details | **Prolongation** ($P_\theta$) | The learned operator that maps span-level intent vectors into byte-level conditioning for the fine solver |
+| Summarizing fine results *up* to global understanding | **Restriction** ($R_\psi$) | The learned operator that compresses fine-rendered bytes (and uncertainty signals) back into a span-level correction for the coarse solver |
+| "Does the plug fit the socket?" | **Phase A: Prolongation Prefit (Scaffolding)** | Training the prolongation operator to reproduce what the original token embeddings would have been — proves the interface before anything ambitious |
+| The two-brain loop running for real | **Phase B: V-cycle Inference** | The core contribution: full coarse↔fine coupling at inference time, with restriction and prolongation actively communicating |
+| Grow up and go native | **Phase C: Gradual Unfreezing / Byte-native Refinement** | Staged unfreezing of the backbone (top-down, gated by regression suites) until the model natively internalizes a byte-level alphabet |
+| Keeping the existing smart brain | **Shrinkwrap (frozen backbone)** | Training only the interface operators $(P_\theta, U_B)$ while $F_W$ stays frozen — reuses the semantic scaffold without relearning it |
+| "Starting from an existing smart AI is cheaper than starting over" | **Hypothesis H2 (Multigrid leverage)** | The falsifiable bet that bootstrap + refinement is significantly more sample-efficient than training a byte model from scratch |
+| Text, images, zip files — all the same machinery | **Capability revelation / format agnosticism** | Once the alphabet is bytes, text/files/protocols/schemas collapse into a single compression continuum rather than separate capability silos |
+| Built-in spell-checker for any file format | **Compression Signatures** | Byte-level varentropy/surprisal maps that localize structural boundaries, integrity violations, and anomalies by finding where compression fails |
+| Whitespace and capitalization stop mattering | **Clamp Invariance** | The property that alignment constraints bind equally under reversible encoding transforms (case, whitespace, base64) — a safety requirement, not just an efficiency gain |
+| "The honest bet" / the three-route experiment | **Falsifiable cost curve** (the critical H2 test) | The controlled experiment comparing routes (a) scratch byte model, (b) frozen shrinkwrap, (c) shrinkwrap + unfreezing at fixed compute budgets |
+| Forgetting everything it already knows | **Catastrophic drift / coherence collapse** | The failure mode when unfreezing proceeds too fast — the model abandons its existing semantic geometry before the byte interface stabilizes |
+| Fast "big picture" brain and slow "fine details" brain | **Coarse-to-fine necessity** (Hypothesis H1) | The claim that byte advantage is latent until a length mechanism is part of the model — bytes alone don't win; the architecture has to solve the sequence-length problem |
+| The resolution knob | **Compression Zoom** | The idea that representation granularity becomes a scheduler-controlled inference parameter rather than a fixed architectural choice |
+| Bad flashcard deal for some languages | **Cross-lingual tokenizer bias / structural inefficiency** | BPE trained on one distribution creates a biased quantization for others, appearing as inflated sequence length and degraded compositionality |

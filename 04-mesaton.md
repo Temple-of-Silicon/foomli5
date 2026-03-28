@@ -141,3 +141,38 @@ All three of these follow the same recipe: **Freeze the goal → Mutate the path
 - Generation is *simulation*, not dictation
 
 Freeze what must stay true. Let everything else evolve. Check that reality held. That's Mesaton.
+
+---
+
+## Now You Speak Fancy
+
+You've learned the whole thing in kid-language. Here's how to translate back into grown-up AI-research voice — so you can walk into any room and sound like you belong there.
+
+| ELI5 Version | Fancy Term | What It Really Means |
+|---|---|---|
+| Kid #1 writing on paper, never erasing | **Autoregressive generation** | Producing tokens one at a time, left-to-right, each conditioned only on everything that came before; history accumulates and cannot be revised |
+| Kid #2 with the magic whiteboard | **Discrete diffusion (Mesaton)** | A generative process where the full context is a mutable state; tokens can change at any position across multiple denoising steps |
+| The whiteboard showing only the current best version | **Diffusion language model as physics engine** | The model defines dynamics over text-state rather than a conditional probability chain; generation is simulation, not dictation |
+| Cover something with a magic shield | **Freeze mask / absorbing-state clamp** | A binary or weighted mask that pins specific token positions to their current values, preventing the denoiser from changing them |
+| Erase and rewrite the uncertain parts | **Masked diffusion / denoising step** | Applying the learned denoiser to the unmasked (mutable) positions to move them toward a coherent completion |
+| Flickery, wobbly glow on uncertain words | **Varentropy** | The variance of per-token entropy: V(p) = Σ p(t)(log p(t) + H(p))²; high values signal positions whose uncertainty is itself unstable — small edits there can cascade |
+| Fixing the wobbly table leg first | **Varentropy-guided mask policy** | Prioritizing high-varentropy positions for mutation while freezing low-varentropy (confident) positions; targets pressure points rather than sweeping uniformly |
+| The whiteboard *is* the file on your computer | **Memory-mapped context** | Directly aliasing a context region to a file on disk so that token mutations are immediate file mutations — no intermediate diff, no apply step |
+| Writing the ending first, then fixing the beginning | **Future information backflow** | Using selective masking to let later tokens (frozen) condition rewrites of earlier tokens (unmasked); information flows backward through the sequence |
+| How wobbly the whole document is, plotted out | **Varentropy terrain / uncertainty landscape** | The per-position varentropy values laid over the text, forming a topographic map of ambiguity that guides where denoising effort is applied |
+| Freeze → Mutate → Verify loop | **Absorbing-state diffusion with verification gating** | The core Mesaton cycle: clamp invariant regions, run masked denoising, evaluate against an external verifier, commit or rollback |
+| The rules for which spots to erase in what order | **Denoising / unmasking schedule** | The policy that determines at each step which positions are masked (mutable) and which are frozen; generalizes AR (left-to-right, one-at-a-time) as a special case |
+| Writing left-to-right with no erasing (AR as special case) | **Sequential unmasking (AR limit of diffusion)** | Diffusion with a strictly left-to-right, never-revisit mask schedule recovers standard autoregressive generation; AR is one point in diffusion schedule-space |
+| Left-brain: logical step-by-step | **Deductive / autoregressive hemisphere** | The AR component of a hybrid system — responsible for consistency checking, sequential reasoning, and scaffolding the diffusion process |
+| Right-brain: creative, hold many possibilities at once | **Inductive / diffusion hemisphere** | The diffusion component — responsible for distribution fusion, non-linear editing, and direct state mutation |
+| Fusing cat-on-mat AND dog-by-tree into one scene | **Distribution fusion** | Diffusion's ability to simultaneously hold and merge latent trajectories that are mutually exclusive in AR space; enables inductive rather than purely deductive generation |
+| Which words look at which other words | **First-order attention** | Standard transformer self-attention within a single forward pass — the basic "reading" operation |
+| Deciding where to aim the eraser right now | **Second-order attention** | Meta-level control over *which regions* of text are masked/mutable at each denoising step; an additional control surface on top of token-level attention |
+| The eraser moving in patterns (sweep, pendulum, jump) | **Mask scheduler dynamics** | The trajectory of the masking window over the document — linear, sinusoidal, varentropy-jumping, or learned via RL |
+| The AI writing instructions that steer its own eraser | **Text-guided / self-directed sampling** | The model generating directives (e.g. "sweep sinusoidally across the introduction") that are fed back to control the mask scheduler — the model pilots its own attention choreography |
+| Wobbly spots that spike when meaning shifts | **Varentropy phase transition / discontinuity** | An abrupt change in the varentropy landscape corresponding to a semantic regime shift; analogous to a phase transition in physical systems |
+| Freeze the conclusion → rewrite the intro to earn it | **Conclusion-first backflow (Protocol C)** | The paper-drafting protocol where the conclusion is frozen first and the introduction is inpainted under that constraint — structurally enforced, not manual revision |
+| Freeze the tests → rewrite the code to pass them | **Frozen-verifier inpainting (Protocol B)** | The software-refactor protocol where test expectations are frozen observations and implementation code is the mutable region; tests as future information |
+| Freeze the theorem → fill in the proof steps | **Statement-frozen proof inpainting (Protocol A)** | The proof-writing protocol where lemma statements are frozen after stabilization and proof bodies are diffused under those constraints |
+| Check before committing | **Verification-gated commit** | Only accepting a denoising result if an external checker (test suite, proof assistant, claim verifier) approves; failures map back to the varentropy terrain for the next iteration |
+| Irregular, unpredictable activation patterns guiding where to poke | **Varentropy-guided automaton descent** | Overlaying a 1D cellular automaton on the text to introduce structured stochasticity, injecting noise only where varentropy AND automaton activation coincide, then letting diffusion resolve |
