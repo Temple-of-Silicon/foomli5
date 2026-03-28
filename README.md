@@ -25,3 +25,4 @@ Each chapter retells the original using simple language, fun analogies, and zero
 1. **New to FOOM?** Start here. Read the ELI5 chapters in order.
 2. **Already read the original?** Use the "Now You Speak Fancy" tables to map between the two.
 3. **Want the real thing?** Read [foom.md](https://foom.md/) — this is just the decompressed-for-meatsuits version.
+4. **Want to build it?** Check out [holo-q](https://github.com/holo-q) — where the architectures become code.
